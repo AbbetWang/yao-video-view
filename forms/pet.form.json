@@ -1,0 +1,142 @@
+{
+  "name": "宠物",
+  "action": {
+    "bind": { "model": "pet", "option": {} }
+  },
+  "layout": {
+    "primary": "id",
+    "form":{
+
+      "sections": [
+        {
+          "columns": [
+            { "name": "id", "width": 200 },
+            { "name": "昵称", "width": 200 },
+            { "name": "类型", "width": 200 },
+            { "name": "入院状态", "width": 200 },
+            { "name": "状态", "width": 200 },
+            { "name": "是否在线", "width": 200 },
+            { "name": "治疗状态", "width": 200 },
+            { "name": "入院时间", "width": 200 },
+            { "name": "花费", "width": 200 },
+            { "name": "相关图片", "width": 200 },
+            { "name": "相关视频", "width": 200 }
+            
+          ]
+          }],
+          "props":{}
+        }
+  },
+  "fields":{
+    "form":{
+      "昵称": {
+        "bind":"name",
+        "edit": {
+          "props": {
+            "autoSize": { "maxRows": 6, "minRows": 2 },
+            "placeholder": "请输入 介绍"
+          },
+          "type": "TextArea"
+        }
+      },
+      "类型": {
+        "bind": "type",
+        "edit": {
+          "type": "Input",
+          "compute": {
+      
+          }
+        }
+      },
+      "入院状态": {
+        "bind": "status",
+        "edit": {
+          "type": "Input",
+          "compute": {
+      
+          }
+        }
+      },
+      "状态": {
+        "bind": "modde",
+        "edit": {
+          "type": "Input",
+          "compute": {
+      
+          }
+        }
+      },
+      "是否在线": {
+        "bind": "online",
+        "edit": {
+          "type": "Input",
+          "compute": {
+      
+          }
+        }
+      },
+      "治疗状态": {
+        "bind": "curing_status",
+        "edit": {
+          "type": "Input",
+          "compute": {
+      
+          }
+        }
+      },
+      "入院时间": {
+        "bind": "stay",
+        "edit": {
+          "type": "Input",
+          "compute": {
+      
+          }
+        }
+      },
+      "花费": {
+        "bind": "cost",
+        "edit": {
+          "type": "Input",
+          "compute": {
+      
+          }
+        }
+      },
+      "相关图片": {
+        "bind": "相关图片",
+        "edit": {
+          "type": "Input"
+        }
+      },
+      
+      "相关视频": {
+        "bind": "videos",
+        "edit": {
+          "type": "Upload",
+          "compute": {
+            "args": [
+              "$C(row)",
+              "videos",
+              "pet"
+            ],
+            "process": "scripts.file.video.VideosEdit"
+          },
+          "props": {
+            "itemProps": {
+              "rules": [
+                {
+                  "required": true
+                }
+              ]
+            },
+            "$api": {
+              "process": "fs.system.Upload"
+            },
+            "maxCount": 1,
+            "filetype": "video"
+          }
+        }
+      }
+    }
+  }
+}
